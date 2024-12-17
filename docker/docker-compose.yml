@@ -14,10 +14,10 @@ services:
     image: javitss/apibicis:latest
     container_name: apibicis
     depends_on:
-      - mongo_proyecto
+      - mongodb
     networks:
       - red_proyecto
 
 networks:
-  bicis_network:
+  red_proyecto:
     driver: bridge
