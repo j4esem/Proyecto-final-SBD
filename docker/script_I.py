@@ -1,26 +1,9 @@
 import time
 import requests
-import pymongo
-import os
-from dotenv import load_dotenv
 from pymongo import MongoClient
-from urllib.parse import quote_plus
-from dotenv import load_dotenv
-import os
 
-# Cargar variables de entorno desde el archivo .env
-load_dotenv()
-
-# Configuración de MongoDB Atlas
-username = os.getenv("MONGO_USER")
-password = os.getenv("MONGO_PASSWORD")
 DATABASE_NAME = "api_data"  # Nombre de la base de datos
 COLLECTION_NAME = "data_collection"  # Nombre de la colección
-
-# Escapar el usuario y la contraseña
-
-# Construcción segura de la URI
-MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 # Configuración de la API
 API_URL = "https://api.citybik.es/v2/networks/bicicorunha"  # Ejemplo de API pública (cámbiala por la API deseada)
@@ -31,7 +14,8 @@ def connect_to_mongodb():
     Conecta a MongoDB Atlas y devuelve la colección de trabajo.
     """
     try:
-        client = MongoClient(MONGO_URI)
+        # Conexión a MongoDB en el contenedor
+        client = MongoClient("mongodb://mongo_proyecto:27017/", socketTimeoutMS=60000, connectTimeoutMS=60000, timeoutms=60000)
         db = client[DATABASE_NAME]
         collection = db[COLLECTION_NAME]
         print("✅ Conexión exitosa a MongoDB Atlas")
