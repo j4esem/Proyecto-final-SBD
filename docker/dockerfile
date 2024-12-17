@@ -1,0 +1,14 @@
+# Usa una imagen base de Python
+FROM python:3.10-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /
+
+# Copia los archivos del script y sus dependencias al contenedor
+COPY . /
+
+# Instala las dependencias desde el archivo requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Comando para ejecutar el script al iniciar el contenedor
+CMD ["python", "script_I.py"]
