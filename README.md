@@ -41,3 +41,40 @@ todo en cada archivo.
       
     - script_II.py. Se conecta al cluster de Mongo Atlas y recoge los datos. Depués, exporta los datos procesados (con claves específicas como id, free_bikes, empty_slots...)
       a dos formatos: csv y parquet. La ruta a donde los exporta se puede configurar desde las variables de entorno.
+
+# ¿Cómo ejecutar los python scripts en tu dispositivo?
+1. Lo primero que debes tener (sin contar que ya tengas un IDE pre-instalado) será instalar las librerías necesarias para los archivos. Para ello debes
+hacer lo siguiente:
+```console
+conda env create --file apibicis.yml
+```
+
+2. En caso de que quieras conecarte a Mongo Atlas con variables de entorno, mira el archivo .env y cambia las variables a tu gusto. Si ya tienes un enlace a Mongo Atlas y no quieres
+   utilizar .env, simplemente cámbialo:
+   
+**Opción 1 con variables de entorno**
+
+.env
+```
+MONGO_USER=<tu-usuario>
+MONGO_PASSWORD=<contraseña-de-cluster>
+MONGO_CLUSTER=<nombre-del-cluster>
+MONGO_DB=api_data
+MONGO_COLLECTION=data_collection
+EXPORT_PATH=./exports
+```
+Script_I.py
+```
+username = os.getenv("MONGO_USER")
+password = os.getenv("MONGO_PASSWORD")
+cluster = os.getenv("MONGO_CLUSTER")
+DATABASE_NAME = "api_data"  # Nombre de la base de datos
+COLLECTION_NAME = "data_collection"  # Nombre de la colección
+```
+**Opción 2 con enlace propio**
+
+Script_I.py
+```
+# Pegas la URL
+MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?retryWrites=true&w=majority&appName={cluster}"
+```
