@@ -41,11 +41,16 @@ def store_data_to_mongo(collection, data):
     """
     Almacena los datos en la colección de MongoDB.
     """
+
+    print(data)
     if data:
         try:
-            # Almacenar el JSON en MongoDB
-            collection.insert_one({"data": data, "timestamp": time.time()})
-            print("✅ Datos almacenados correctamente en MongoDB")
+            documents = [
+                {**station, "timestamp": time.time()} for station in data
+            ]
+            
+            # Insertar múltiples documentos en MongoDB
+            collection.insert_many(documents)
         except Exception as e:
             print(f"❌ Error al almacenar los datos en MongoDB: {e}")
 
@@ -60,6 +65,7 @@ def main():
         while True:
             # Obtener datos de la API
             data = fetch_api_data()
+            # print(type(data['network']['stations']))
 
             # Almacenar los datos en MongoDB
             store_data_to_mongo(collection, data['network']['stations'])
