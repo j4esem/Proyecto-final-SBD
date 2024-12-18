@@ -18,7 +18,7 @@ def connect_to_mongodb():
         client = MongoClient("mongodb://mongo_proyecto:27017/", socketTimeoutMS=60000, connectTimeoutMS=60000, timeoutms=60000)
         db = client[DATABASE_NAME]
         collection = db[COLLECTION_NAME]
-        print("✅ Conexión exitosa a MongoDB Atlas")
+        print("✅ Conexión exitosa a MongoDB")
         return collection
     except Exception as e:
         print(f"❌ Error al conectar a MongoDB: {e}")
@@ -41,8 +41,6 @@ def store_data_to_mongo(collection, data):
     """
     Almacena los datos en la colección de MongoDB.
     """
-
-    print(data)
     if data:
         try:
             documents = [
@@ -65,7 +63,6 @@ def main():
         while True:
             # Obtener datos de la API
             data = fetch_api_data()
-            # print(type(data['network']['stations']))
 
             # Almacenar los datos en MongoDB
             store_data_to_mongo(collection, data['network']['stations'])
