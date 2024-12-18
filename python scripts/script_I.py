@@ -14,13 +14,14 @@ load_dotenv()
 # Configuración de MongoDB Atlas
 username = os.getenv("MONGO_USER")
 password = os.getenv("MONGO_PASSWORD")
+cluster = os.getenv("MONGO_CLUSTER")
 DATABASE_NAME = "api_data"  # Nombre de la base de datos
 COLLECTION_NAME = "data_collection"  # Nombre de la colección
 
 # Escapar el usuario y la contraseña
 
 # Construcción segura de la URI
-MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?retryWrites=true&w=majority&appName={cluster}"
 
 # Configuración de la API
 API_URL = "https://api.citybik.es/v2/networks/bicicorunha"  # Ejemplo de API pública (cámbiala por la API deseada)
