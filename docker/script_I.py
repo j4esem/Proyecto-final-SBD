@@ -11,7 +11,7 @@ INTERVAL_SECONDS = 60  # Intervalo entre peticiones (en segundos)
 
 def connect_to_mongodb():
     """
-    Conecta a MongoDB Atlas y devuelve la colección de trabajo.
+    Conecta a MongoDB y devuelve la colección de trabajo.
     """
     try:
         # Conexión a MongoDB en el contenedor
@@ -44,7 +44,7 @@ def store_data_to_mongo(collection, data):
     if data:
         try:
             documents = [
-                {**station, "timestamp": time.time()} for station in data
+                {**station} for station in data
             ]
             
             # Insertar múltiples documentos en MongoDB
