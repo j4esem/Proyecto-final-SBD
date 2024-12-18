@@ -14,14 +14,14 @@ ser en local o en cloud (Mongo ATLAS). Además, se utiliza Docker para dockeriza
 
 ## Estructura del proyecto
 
-**/**
+**/** 📂
   - .env: se encuentran variables de entorno para los scripts. En él deberías poner contraseña del cluster, nombre de usuario, nombre de la colección de Mongo...
 > [!CAUTION]
 > No compartas tus variables de entorno a sitios públicos.
   - LICENSE: este proyecto está bajo una licencia de tipo GNU General Public License v3.0
 ---
 
-**/ docker**
+**/ docker** 📂
   - docker-compose.yml: archivo donde se encuentra la configuración de los docker utilizados (mongo y un pequeño contenedor para lanzar un script)
   - dockerfile: archivo para la creación de la imagen de un docker. El objetivo es crear una imagen lo más pequeña posible para que el contenedor
     ejecute un trabajo.
@@ -34,13 +34,13 @@ todo en cada archivo.
 
 ---
 
-**/ notebooks**
+**/ notebooks** 📂
 
   En esta carpeta se encuentran a modo de cuaderno Jupyter los scripts que se han hecho. De esta manera, se puede ver un poco más detallado lo que hace cada uno de ellos.
   
 ---
 
-**/ python_scripts**
+**/ python_scripts** 📂
   
   En esta carpeta se encuentran los scripts básicos de python:
   
