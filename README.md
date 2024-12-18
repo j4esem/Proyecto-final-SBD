@@ -1,5 +1,13 @@
 # Projecto Docker + Mongo DB/Atlas + API CityBikes
 
+
+# Índice
+
+1. [Introducción](#introducción)  
+2. [Estructura del Proyecto](#estructura-del-proyecto)   
+3. [Cómo ejecutar los script](#cómo-ejecutar-los-python-scripts-en-tu-dispositivo)  
+4. [Cómo ejecutarlo en Docker](#cómo-ejecutar-script_ipy-de-forma-dockerizada)  
+
 ## Introducción
 El objetivo de este proyecto es utilizar los datos de la API CityBikes con diferentes tecnologías. Con un par de scripts, se recoge información, se procesa y se guarda en una base de datos que podrá
 ser en local o en cloud (Mongo ATLAS). Además, se utiliza Docker para dockerizar el proceso y así hacer más fácil el despliegue en cualquier dispositivo.
@@ -42,7 +50,7 @@ todo en cada archivo.
     - script_II.py. Se conecta al cluster de Mongo Atlas y recoge los datos. Depués, exporta los datos procesados (con claves específicas como id, free_bikes, empty_slots...)
       a dos formatos: csv y parquet. La ruta a donde los exporta se puede configurar desde las variables de entorno.
 
-# ¿Cómo ejecutar los python scripts en tu dispositivo?
+## ¿Cómo ejecutar los python scripts en tu dispositivo?
 1. Lo primero que debes tener (sin contar que ya tengas un IDE pre-instalado) será instalar las librerías necesarias para los archivos. Para ello debes
 hacer lo siguiente:
 ```console
@@ -86,7 +94,7 @@ MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?re
    python script_I.py && python script_II.py
    ```
 
-# ¿Cómo ejecutar script_I.py de forma dockerizada?
+## ¿Cómo ejecutar script_I.py de forma dockerizada?
 
 En principio, el contenedor que ejecutará el trabajo del script está en mi docker hub y, además, a través del docker-compose.yml se configura para que se genere un contenedor desde esa imagen en
 docker hub.
