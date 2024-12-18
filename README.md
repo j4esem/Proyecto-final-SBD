@@ -78,3 +78,33 @@ Script_I.py
 # Pegas la URL
 MONGO_URI = f"mongodb+srv://{username}:{password}@cluster0.kdeu0.mongodb.net/?retryWrites=true&w=majority&appName={cluster}"
 ```
+
+3. Por último, simplemente ejecuta los archivos desde los cuadernos Jupyter o desde consola utilizando el siguiente comando:
+
+   ```console
+   cd 'python scripts'
+   python script_I.py && python script_II.py
+   ```
+
+# ¿Cómo ejecutar script_I.py de forma dockerizada?
+
+En principio, el contenedor que ejecutará el trabajo del script está en mi docker hub y, además, a través del docker-compose.yml se configura para que se genere un contenedor desde esa imagen en
+docker hub.
+Si quieres generar tu propia imagen en tu docker hub deberás ejecutar, en el mismo directorio a dockerfile. esto:
+     
+       
+       docker build -t <nombre-de-usuario-dockerhub>/<nombre-de-imagen>:latest
+       docker login
+       docker push <nombre-de-usuario-dockerhub>/<nombre-de-imagen>:latest
+       
+De esta manera, se sube a tu docker hub esa misma imagen.
+
+Lo siguiente será crear las imágenes docker desde docker compose:
+
+```console
+docker compose up -d
+```
+
+Listo !! 🚀 
+
+Ya tendrías tus dos contenedores corriendo y funcionando. A partir de ahora la máquina 'apibicis' estará continuamente cargando datos en la otra máquina Mongo DB
