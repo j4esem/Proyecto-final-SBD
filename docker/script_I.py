@@ -15,7 +15,7 @@ def connect_to_mongodb():
     """
     try:
         # Conexión a MongoDB en el contenedor
-        client = MongoClient("mongodb://mongo_proyecto:27017/", socketTimeoutMS=60000, connectTimeoutMS=60000, timeoutms=60000)
+        client = MongoClient("mongodb://mongo_proyecto:27017/")
         db = client[DATABASE_NAME]
         collection = db[COLLECTION_NAME]
         print("✅ Conexión exitosa a MongoDB")
